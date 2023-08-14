@@ -26,11 +26,17 @@ http_archive(
 )
 
 # Abseil
-http_archive(
+new_local_repository(
     name = "com_google_absl",
-    urls = ["https://github.com/abseil/abseil-cpp/archive/a3020c763c12bd16bbf00804abe853afa5778174.zip"],
-    strip_prefix = "abseil-cpp-a3020c763c12bd16bbf00804abe853afa5778174",
-    sha256 = "0b0cd6cacd754b88cfc098e8a87a6e00f1ea5833ebf0c34738dfb9357345b13c",
+    path = "@abseil_cpp_root@",
+    build_file_content = """
+cc_library(
+    name = "absl",
+    srcs = glob(["**/*.cc"]),
+    hdrs = glob(["**/*.h"]),
+    visibility = ["//visibility:public"],
+)
+""",
 )
 
 # GoogleTest/GoogleMock framework. Used by most unit-tests.

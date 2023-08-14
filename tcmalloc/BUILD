@@ -96,7 +96,7 @@ cc_library(
         "tcmalloc.h",
     ],
     copts = TCMALLOC_DEFAULT_COPTS,
-    linkstatic = 1,
+    linkstatic = 0,
     visibility = ["//visibility:public"],
     deps = tcmalloc_deps + [
         ":common_8k_pages",
@@ -115,7 +115,7 @@ cc_library(
         "tcmalloc.h",
     ],
     copts = ["-DTCMALLOC_DEPRECATED_PERTHREAD"] + TCMALLOC_DEFAULT_COPTS,
-    linkstatic = 1,
+    linkstatic = 0,
     visibility = [":tcmalloc_tests"],
     deps = tcmalloc_deps + [
         ":common_deprecated_perthread",
@@ -238,7 +238,7 @@ create_tcmalloc_libraries(
         "transfer_cache_stats.h",
     ],
     copts = TCMALLOC_DEFAULT_COPTS,
-    linkstatic = 1,
+    linkstatic = 0,
     visibility = [":tcmalloc_tests"],
     deps = [
         ":experiment",
@@ -375,7 +375,7 @@ cc_library(
         "tcmalloc.h",
     ],
     copts = ["-DTCMALLOC_LARGE_PAGES"] + TCMALLOC_DEFAULT_COPTS,
-    linkstatic = 1,
+    linkstatic = 0,
     visibility = ["//visibility:public"],
     deps = tcmalloc_deps + [
         ":common_large_pages",
@@ -395,7 +395,7 @@ cc_library(
         "tcmalloc.h",
     ],
     copts = ["-DTCMALLOC_256K_PAGES"] + TCMALLOC_DEFAULT_COPTS,
-    linkstatic = 1,
+    linkstatic = 0,
     visibility = ["//visibility:public"],
     deps = tcmalloc_deps + [
         ":common_256k_pages",
@@ -419,7 +419,7 @@ cc_library(
         "tcmalloc.h",
     ],
     copts = ["-DTCMALLOC_SMALL_BUT_SLOW"] + TCMALLOC_DEFAULT_COPTS,
-    linkstatic = 1,
+    linkstatic = 0,
     visibility = ["//tcmalloc:__subpackages__"],
     deps = tcmalloc_deps + [
         ":common_small_but_slow",
@@ -441,7 +441,7 @@ cc_library(
         "tcmalloc.h",
     ],
     copts = ["-DTCMALLOC_NUMA_AWARE"] + TCMALLOC_DEFAULT_COPTS,
-    linkstatic = 1,
+    linkstatic = 0,
     visibility = ["//tcmalloc/testing:__pkg__"],
     deps = tcmalloc_deps + [
         ":common_numa_aware",
@@ -703,7 +703,7 @@ cc_test(
     timeout = "eternal",
     srcs = ["huge_page_filler_test.cc"],
     copts = TCMALLOC_DEFAULT_COPTS,
-    linkstatic = 1,
+    linkstatic = 0,
     shard_count = 3,
     deps = [
         ":common_8k_pages",
@@ -729,7 +729,7 @@ cc_test(
     name = "huge_page_aware_allocator_test",
     srcs = ["huge_page_aware_allocator_test.cc"],
     copts = TCMALLOC_DEFAULT_COPTS,
-    linkstatic = 1,
+    linkstatic = 0,
     malloc = "//tcmalloc",
     deps = [
         ":common_8k_pages",
@@ -888,7 +888,7 @@ cc_test(
     name = "page_allocator_test",
     srcs = ["page_allocator_test.cc"],
     copts = TCMALLOC_DEFAULT_COPTS,
-    linkstatic = 1,
+    linkstatic = 0,
     deps = [
         ":common_8k_pages",
         ":malloc_extension",
@@ -906,7 +906,7 @@ cc_test(
     timeout = "long",
     srcs = ["profile_test.cc"],
     copts = TCMALLOC_DEFAULT_COPTS,
-    linkstatic = 1,
+    linkstatic = 0,
     malloc = "//tcmalloc",
     shard_count = 2,
     tags = [
@@ -934,7 +934,7 @@ cc_test(
     size = "medium",
     srcs = ["thread_cache_test.cc"],
     copts = TCMALLOC_DEFAULT_COPTS,
-    linkstatic = 1,
+    linkstatic = 0,
     malloc = "//tcmalloc:tcmalloc_deprecated_perthread",
     tags = ["nosan"],
     deps = [
