@@ -38,6 +38,6 @@ cms_new_local_repository = repository_rule(
         "create_files": attr.string_list(),
     },
     environ = [
-        "TC_CMS_EXTERNALS",
+        "TCMALLOC_CMS_EXTERNALS",
     ],
 )
